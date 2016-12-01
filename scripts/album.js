@@ -28,6 +28,21 @@ var albumMarconi = {
             { title: 'Wrong phone number', duration: '2:15'}
         ]
     };
+//My pick Album
+var albumLewis = {
+        title: 'Trilogy + 2',
+        artist: 'Clive Staples Lewis',
+        label: 'Scifi',
+        year: '1938',
+        albumArtUrl: 'assets/images/album_covers/13.png',
+        songs: [
+            { title: 'Out of the Silent Planet', duration: '5:26' },
+            { title: 'Perelandra', duration: '4:14' },
+            { title: 'That Hideous Strength', duration: '6:01' },
+            { title: 'The Tortured Planet', duration: '4:21'},
+            { title: 'The Dark Tower', duration: '3:15'}
+        ]
+    };
 
 var createSongRow = function (songNumber, songName, songLength) {
         var template =
@@ -35,20 +50,20 @@ var createSongRow = function (songNumber, songName, songLength) {
                 + '  <td class="song-item-number">' + songNumber + '</td>'
                 + '  <td class="song-item-title">' + songName + '</td>'
                 + '  <td class="song-item-duration">' + songLength + '</td>'
-                + '</tr>';
-    
+                + '</tr>'
+        ;
     
         return template;
     };
 
 var setCurrentAlbum = function (album) {
      // #1
-        var albumTitle = document.getElementsByClassName('album-view-title')[0];
-        var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-        var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-        var albumImage = document.getElementsByClassName('album-cover-art')[0];
-        var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
- 
+var albumTitle = document.getElementsByClassName('album-view-title')[0];
+var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+    
      // #2
         albumTitle.firstChild.nodeValue = album.title;
         albumArtist.firstChild.nodeValue = album.artist;
@@ -66,4 +81,14 @@ var setCurrentAlbum = function (album) {
  
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
+     
+     var albums = [albumPicasso, albumMarconi, albumLewis];
+     var index = 1;
+     albumImage.addEventListener("click", function(event) {
+         setCurrentAlbum(album[index]);
+         index++;
+         if (index == albums.length) {
+             index = 0;
+         }
+     });
  };
