@@ -28,6 +28,22 @@ var albumPicasso = {
      ]
  };
 
+//My pick Album
+var albumLewis = {
+    title: 'Trilogy + 2',
+    artist: 'Clive Staples Lewis',
+    label: 'Scifi',
+    year: '1938',
+    albumArtUrl: 'assets/images/album_covers/13.png',
+    songs: [
+        { title: 'Out of the Silent Planet', duration: '5:26' },
+        { title: 'Perelandra', duration: '4:14' },
+        { title: 'That Hideous Strength', duration: '6:01' },
+        { title: 'The Tortured Planet', duration: '4:21'},
+        { title: 'The Dark Tower', duration: '3:15'}
+    ]		          
+};
+
 var createSongRow = function(songNumber, songName, songLength) {
     var template = 
         '<tr class="album-view-song-item">'
@@ -41,11 +57,11 @@ var createSongRow = function(songNumber, songName, songLength) {
 };
 
 var setCurrentAlbum = function(album) {
-    var albumTitle = document.getElementsByClassName('album-view-title')[0];
-    var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-    var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-    var albumImage = document.getElementsByClassName('album-cover-art')[0];
-    var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+var albumTitle = document.getElementsByClassName('album-view-title')[0];
+var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
  
     albumTitle.firstChild.nodeValue = album.title;
     albumArtist.firstChild.nodeValue = album.artist;
@@ -111,6 +127,8 @@ var currentlyPlayingSong = null;
 
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
+  
+    var albums = [albumPicasso, albumMarconi, albumLewis];
     songListContainer.addEventListener('mouseover', function(event) {
         if (event.target.parentElement.className === 'album-view-song-item') {
             event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
