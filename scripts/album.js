@@ -1,3 +1,13 @@
+// Assignment after watching the solution video
+var setSong = function(songNumber) {
+    currentlyPlayingSongNumber = parseInt(songNumber);
+    currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
+};
+
+var getSongNumberCell = function(number) {
+return $('.song-item-number[data-song-number="' + Number + '"]');    
+};
+
 var createSongRow = function(songNumber, songName, songLength) {
     var template = 
         '<tr class="album-view-song-item">'
@@ -79,15 +89,6 @@ var setCurrentAlbum = function(album) {
 
 var trackIndex = function(album, song) {
      return album.songs.indexOf(song);
-}
-
-var setSong = function(songNumber){
-    currentlyPlayingSongNumber = parseInt(songNumber);
-    currentSongFromAlbum = currentAlbum.songs[parseInt(songNumber) - 1];
-};
-
-var getSongNumberCell = function(number) {
-$('.song-item-number[data-song-number="' + Number + '"]');    
 }
 
 var nextSong = function (){
